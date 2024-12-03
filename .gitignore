@@ -1,0 +1,3 @@
+node_modules
+src/db/config/database.json
+src/db/config/sequelize.config.js
