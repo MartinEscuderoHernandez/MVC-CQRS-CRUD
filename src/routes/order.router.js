@@ -1,5 +1,5 @@
 const express = require('express');
-const { createOrderCommand, updateOrderCommand } = require('../commands/order.command');
+const { createOrderCommand, updateOrderCommand, deleteOrderCommand } = require('../commands/order.command');
 const orderCommandHandler = require('../handlers/order.command.handler');
 const orderQueryHandler = require('../handlers/order.query.handler');
 const { getAllOrdersQuery, getOrderByIdQuery } = require('../queries/order.query')
@@ -45,6 +45,18 @@ orderRouter.get('/:id', async (req, res, next) => {
 orderRouter.patch('/:id', async (req, res, next) => {
     try {
         const command = updateOrderCommand(req.params.id, req.body);
+
+        await orderCommandHandler.handle(command);
+
+        res.sendStatus(204);
+    } catch (error) {
+        next(error);
+    }
+});
+
+orderRouter.delete('/:id', async (req, res, next) => {
+    try {
+        const command = deleteOrderCommand(req.params.id);
 
         await orderCommandHandler.handle(command);
 

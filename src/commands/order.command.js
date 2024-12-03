@@ -17,4 +17,11 @@ const updateOrderCommand = (id, orderData) => ({
     }
 });
 
-module.exports = { createOrderCommand, updateOrderCommand };
+const deleteOrderCommand = (id) => ({
+    type: 'DELETE_ORDER',
+    payload: {
+        id,
+    }
+});
+
+module.exports = { createOrderCommand, updateOrderCommand, deleteOrderCommand };

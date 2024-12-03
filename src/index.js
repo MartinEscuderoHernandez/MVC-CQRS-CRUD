@@ -1,7 +1,7 @@
 const app = require('./app/app');
 const sequelize = require('./db/config/sequelize.config');
 
-const PORT = 3001;
+const PORT = 3002;
 
 app.listen(PORT, async () => {
   try {

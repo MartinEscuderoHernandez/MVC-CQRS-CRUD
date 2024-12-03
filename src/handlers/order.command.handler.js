@@ -17,6 +17,14 @@ const orderCommandHandler = {
                 } catch (error) {
                     throw error;
                 }
+            case 'DELETE_ORDER':
+                try {
+                    await OrderService.destroy(command.payload.id);
+                    break;
+                } catch (error) {
+                    throw error;
+                }
+
             default:
                 throw new Error('Command not found')
         }
